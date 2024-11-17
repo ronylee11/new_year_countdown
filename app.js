@@ -5,6 +5,20 @@ const { useState } = React;
 function compareDates(d1, d2) {
   let [d1y, d1m, d1d] = [d1.getFullYear(), d1.getMonth() + 1, d1.getDate()];
   let [d2y, d2m, d2d] = [d2.getFullYear(), d2.getMonth() + 1, d2.getDate()];
+  if (d1 > d2) {
+    let years = d1y - d2y;
+    let months = d1m - d2m;
+    let days = d1d - d2d;
+    if (days < 0) {
+      months--;
+      days += 30;
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    return { years, months, days };
+  }
   return { years: 1, months: 1, days: 1 };
 }
 
