@@ -43,15 +43,39 @@ function MyApp() {
       </div>
     );
   }
+  let countdownOutput = "";
+  if (countdown.years > 0) {
+    if (countdown.years === 1) {
+      countdownOutput += `${countdown.years} Year, `;
+    } else {
+      countdownOutput += `${countdown.years} Years, `;
+    }
+  }
+  if (countdown.months > 0) {
+    if (countdown.months === 1) {
+      countdownOutput += `${countdown.months} Month, `;
+    } else {
+      countdownOutput += `${countdown.months} Months, `;
+    }
+  }
+  if (countdown.days > 0) {
+    if (countdown.days === 1) {
+      countdownOutput += `${countdown.days} Day remaining!`;
+    } else {
+      countdownOutput += `${countdown.days} Days remaining!`;
+    }
+  }
 
   return (
     <div>
-      <h1>New Year Countdown!</h1>
+      <h1>
+        New Year Countdown!{" "}
+        {`${newYear.getFullYear()}-${
+          newYear.getMonth() + 1
+        }-${newYear.getDate()}`}
+      </h1>
       <h2>{currentDate.toLocaleTimeString()}</h2>
-      <h2>
-        {`${countdown.years} Years, ${countdown.months} Months, ${countdown.days} Days remaining!`}
-        .
-      </h2>
+      <h2>{countdownOutput}</h2>
     </div>
   );
 }
